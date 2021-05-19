@@ -1,0 +1,38 @@
+<!-- 
+   Authors : leonidas (Asman)
+  Website : https://leonidas.com/
+  App Name : ionic 5 dimarket app
+  Created : 01-Jan-2021
+  This App Template Source code is licensed as per the
+  terms found in the Website https://leonidas.com/license
+  Copyright  © 2021-present leonidas.
+ -->
+<ion-tabs>
+  <ion-tab-bar slot="bottom" class="ion-no-border">
+    <ion-tab-button tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label class="my-label"> {{util.getString('Beranda')}} </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="orders">
+      <ion-icon name="newspaper"></ion-icon>
+      <ion-label class="my-label"> {{util.getString('Riwayat')}} </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="cart" style="background-color: #1faa00;color:#ffffff;border-radius: 90px / 90px; border: 5px solid #e9e9e9;margin-bottom: 10px; position: relative;">
+      <ion-icon name="basket" style="font-size: 30px;"></ion-icon>
+      <!-- <ion-label class="my-label"> {{util.getString('Keranjang')}} </ion-label> -->
+      <ion-badge color="danger" *ngIf="cart.cart?.length"> {{cart.cart.length}} </ion-badge>
+    </ion-tab-button>
+
+    <ion-tab-button tab="categories">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label class="my-label"> {{util.getString('Informasi')}} </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="account">
+      <ion-icon name="person"></ion-icon>
+      <ion-label class="my-label"> {{util.getString('Akun')}} </ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

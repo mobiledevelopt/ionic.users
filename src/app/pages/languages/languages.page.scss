@@ -1,0 +1,19 @@
+/*
+  Authors : dimarket
+  Website : https://#/
+  App Name : dimarket
+  Created : 10-Sep-2020
+  This App Template Source code is licensed as per the
+  terms found in the Website https://#/license
+  Copyright © 2020-present dimarket.
+*/
+.thums {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    img{
+        height: 25px;
+        width: 25px;
+    }
+}

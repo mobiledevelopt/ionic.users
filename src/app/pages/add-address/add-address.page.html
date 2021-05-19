@@ -1,0 +1,70 @@
+<!-- 
+   Authors : dimarket
+  Website : https://#/
+  App Name : dimarket
+  Created : 10-Sep-2020
+  This App Template Source code is licensed as per the
+  terms found in the Website https://#/license
+  Copyright © 2020-present dimarket.
+ -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title size="small"> {{util.getString('Tambah Alamat')}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="div_map" #map></div>
+  <div class="informations">
+    <ion-item>
+      <ion-label position="stacked"> {{util.getString('Geo Tagging')}} </ion-label>
+      <ion-input [(ngModel)]="address"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"> {{util.getString('Alamat Lengkap')}} </ion-label>
+      <ion-input [(ngModel)]="house"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"> {{util.getString('Acuan')}} </ion-label>
+      <ion-input [(ngModel)]="landmark"></ion-input>
+    </ion-item>
+    <!-- <ion-item>
+      <ion-label position="stacked"> {{util.getString('Kode Pos')}} </ion-label>
+      <ion-input type="number" [(ngModel)]="pincode"></ion-input>
+    </ion-item> -->
+    <ion-radio-group [(ngModel)]="title">
+      <ion-label class="title">
+        {{util.getString('Simpan Sebagai')}}
+      </ion-label>
+      <ion-item style="margin-top: 20px;">
+        <ion-icon name="home-outline" slot="start"></ion-icon>
+        <ion-label> {{util.getString('Rumah')}} </ion-label>
+        <ion-radio value="home"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+        <ion-label> {{util.getString('Kantor')}} </ion-label>
+        <ion-radio value="work"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="navigate-outline" slot="start"></ion-icon>
+        <ion-label> {{util.getString('Lainnya')}} </ion-label>
+        <ion-radio value="other"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-button *ngIf="from ==='new'" (click)="addAddress()" expand="block">
+      {{util.getString('Tambah')}}
+    </ion-button>
+
+    <ion-button *ngIf="from ==='edit'" (click)="updateAddress()" expand="block">
+      {{util.getString('Ubah')}}
+    </ion-button>
+  </div>
+</ion-content>

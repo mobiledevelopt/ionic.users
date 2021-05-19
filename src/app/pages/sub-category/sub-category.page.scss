@@ -1,0 +1,317 @@
+/*
+  Authors : dimarket
+  Website : https://#/
+  App Name : dimarket
+  Created : 10-Sep-2020
+  This App Template Source code is licensed as per the
+  terms found in the Website https://#/license
+  Copyright © 2020-present dimarket.
+*/
+.mnu-selected {
+  border: 1px solid var(--ion-color-primary) !important;
+}
+ion-label {
+  display: block !important;
+}
+ion-title {
+  text-align: center !important;
+  margin-left: -25px;
+}
+.product {
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.coverimage {
+  padding-top: 15px;
+}
+.menutext {
+  font-size: 10px;
+  display: block;
+}
+.productimage {
+  height: 77px;
+  width: 77px;
+  margin: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-width: 50%;
+  position: relative;
+}
+.producttext {
+  font-size: 11px;
+  height: 30px;
+  display: block;
+  text-align: left;
+  font-weight: bold;
+  padding: 5px;
+  margin-top: 5px;
+  }
+.variant {
+  .selecter {
+    font-size: 10px;
+    padding: 2px;
+    border: 1px solid lightgray;
+    margin: 10px 0px;
+    border-radius: 5px;
+    display: flex !important;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: gray;
+    position: relative;
+    overflow: hidden;
+  }
+  ion-item {
+    width: 100%;
+    min-width: 100%;
+    font-size: 10px !important;
+    --padding-start: 0px;
+    --padding-end: 0px;
+    font-size: 10px !important;
+    ion-label {
+      font-size: 10px !important;
+    }
+    .select-icon {
+      display: none !important;
+    }
+    ion-select {
+      width: 100%;
+      min-width: 100%;
+      font-size: 10px !important;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+      min-height: 20px;
+      height: 20px;
+    }
+  }
+}
+.itemsKind {
+  font-weight: 400;
+  font-size: 10px;
+}
+.kind {
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.offer {
+  height: 15px;
+  width: 15px;
+  position: absolute;
+  right: 20px;
+  top: 5px;
+}
+
+.percent {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: red;
+  left: 5px;
+  top: 2px;
+  line-height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 8px;
+  color: white;
+}
+.notInStoke {
+  background: #8373735c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  height: 20px;
+  line-height: 20px;
+  .text {
+    border: 1px solid gray;
+    padding: 2px;
+    border-radius: 5px;
+    background: white;
+    color: gray;
+    font-size: 10px;
+  }
+}
+.price_lbl {
+  font-weight: 400;
+  font-size: 12px;
+  padding: 5px;
+  text-align: left;
+  .original {
+    text-decoration: line-through;
+  }
+  .sell {
+    font-weight: bold;
+  }
+  .dicount {
+    font-weight: bold;
+  }
+}
+.btnBtm {
+  display: flex;
+  flex-direction: row-reverse;
+  .ripple-parent {
+    position: relative;
+    overflow: hidden;
+    padding: 5px;
+    color: white;
+    background: var(--ion-color-primary);
+    border-radius: 3px;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+  }
+}
+.cartBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  .abs_add {
+    width: 100px;
+    background: var(--ion-color-primary);
+    height: 30px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3px;
+    padding-right: 3px;
+
+    ion-label {
+      color: white;
+      font-size: 10px;
+      font-family: muli-bold;
+    }
+
+    img {
+      color: #ff8e80;
+      width: 25px;
+    }
+  }
+}
+
+.textconten {
+  font-weight: bold;
+  padding-top: 5%;
+}
+
+.toolbartop {
+  padding-top: 5%;
+}
+
+.icon-menu {
+  height: 25px;
+  width: 25px;
+}
+
+.menu-content {
+  height: 90vh;
+  overflow: auto;
+  background-color: #F7FBFF;
+  
+
+  .side_col {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.text_head {
+  font-weight: 600;
+  display: block;
+  margin-top: 20px;
+}
+
+.brand {
+  background-color: #F7FBFF;
+}
+
+.sliders{    
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  margin-left: 5px;
+  .categoryIcon{
+      padding: 5px;
+      text-align: center;
+      // box-shadow: 0px 2px 3px rgba(0,0,0,0.05);
+      border: 1px solid lightgray;
+      border-radius: 7px;
+      margin-left:5px;
+      // background-color: #ffffff;
+
+      .imgs{
+          line-height: 0px;
+          height: 0px;
+          width: 100px;
+          position: relative;
+          
+      }
+      .icon{
+          // height: 25px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          width: 40px;
+      }
+
+      .name{
+          font-size: 11px;
+          height:18px;
+          font-weight: bold;
+          color: rgb(22, 22, 22);
+          margin: 5px 0px;
+          text-align: center;
+      }
+  }
+}
+
+.slider_div{
+  margin-top: 15px;
+
+  .card{
+      width: 100%;
+      margin-right: 0px;
+      margin-bottom: 10px;
+
+      .back_image{
+          height: 200px;
+          width: 100%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 7px;
+          position: relative;
+          
+          .overlay_div{
+              background: rgba(36, 36, 36, 0.5);
+              position: absolute;
+              top: 95%;
+              transform: translateY(-50%);
+              width: 100%;
+              right: 0;
+              padding: 5px;
+
+              ion-label {
+                  color: white;
+                  text-align: right;
+                  font-size: 11px;
+                  font-family: muli-bold;
+              }
+          }
+      }
+  }
+}

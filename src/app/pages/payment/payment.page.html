@@ -1,0 +1,225 @@
+<!-- 
+   Authors : dimarket
+  Website : https://#/
+  App Name : dimarket
+  Created : 10-Sep-2020
+  This App Template Source code is licensed as per the
+  terms found in the Website https://#/license
+  Copyright © 2020-present dimarket.
+ -->
+<ion-header mode="ios" class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title size="small"> {{util.getString('Checkout')}} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="coupones" (click)="openCoupon()">
+    <img src="assets/imgs/discount.png" class="badge" />
+    <ion-label class="title" style="font-size: 13px"
+      >{{util.getString('Terapkan kode kupon')}} <br />
+      <p *ngIf="cart.coupon" style="font-size: 13px">
+        {{util.getString('Kupon Diterapkan')}}
+      </p>
+    </ion-label>
+  </div>
+
+  <div class="billing">
+    <div class="singleRow">
+      <ion-label class="headerTitle" style="font-size: 12px">
+        {{util.getString('Total Item')}}
+      </ion-label>
+      <ion-label class="price">
+        <span *ngIf="util.cside ==='left'" style="font-size: 12px">
+          {{util.currecny}} {{cart.totalPrice | number : fractionSize}}</span
+        >
+        <span *ngIf="util.cside ==='right'" style="font-size: 12px"
+          >{{cart.totalPrice}} {{util.currecny}}
+        </span>
+      </ion-label>
+    </div>
+
+    <div class="singleRow" *ngIf="cart.coupon">
+      <ion-label class="headerTitle" style="font-size: 12px">
+        {{util.getString('Diskon')}}
+      </ion-label>
+      <ion-label class="price">
+        <span *ngIf="util.cside ==='left'" style="font-size: 12px">
+          {{util.currecny}} {{cart.discount}}</span
+        >
+        <span *ngIf="util.cside ==='right'" style="font-size: 12px"
+          >{{cart.discount}} {{util.currecny}}
+        </span>
+      </ion-label>
+    </div>
+
+    <div class="singleRow">
+      <ion-label class="headerTitle" style="font-size: 12px">
+        {{util.getString('Pajak & Biaya Admin')}}
+      </ion-label>
+      <ion-label class="price">
+        <span *ngIf="util.cside ==='left'" style="font-size: 12px">
+          {{util.currecny}} {{cart.orderTax}}</span
+        >
+        <span *ngIf="util.cside ==='right'" style="font-size: 12px"
+          >{{cart.orderTax}} {{util.currecny}}
+        </span>
+      </ion-label>
+    </div>
+
+    <div class="singleRow">
+      <ion-label class="headerTitle" style="font-size: 12px">
+        {{util.getString('Ongkir')}}
+      </ion-label>
+      <ion-label class="price">
+        <span *ngIf="util.cside ==='left'" style="font-size: 12px">
+          {{util.currecny}} {{cart.deliveryPrice}}</span
+        >
+        <span *ngIf="util.cside ==='right'" style="font-size: 12px"
+          >{{cart.deliveryPrice}} {{util.currecny}}
+        </span>
+      </ion-label>
+    </div>
+
+    <div class="singleRow">
+      <ion-label class="headerTotal boldClass" style="font-size: 13px">
+        {{util.getString('Total Bayar')}}
+      </ion-label>
+      <ion-label class="priceTotal boldClass">
+        <span *ngIf="util.cside ==='left'" style="font-size: 13px">
+          {{util.currecny}} {{cart.grandTotal | number : fractionSize}}</span
+        >
+        <span *ngIf="util.cside ==='right'" style="font-size: 13px"
+          >{{cart.grandTotal}} {{util.currecny}}
+        </span>
+      </ion-label>
+    </div>
+  </div>
+  <div class="header">
+    <ion-label class="title" style="font-size: 13px">
+      {{util.getString('Bayar Dengan')}}
+    </ion-label>
+  </div>
+  <ion-item
+    (click)="openStripe()"
+    lines="none"
+    *ngIf="havePayment && haveStripe"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/stripe.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with Stripe')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="createOrder('cod')"
+    lines="none"
+    *ngIf="havePayment && haveCOD"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/cod.png" />
+    </ion-thumbnail>
+    <ion-label style="font-size: 13px">
+      {{util.getString('Bayar di Tempat ( COD )')}}
+    </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="createOrder('Transfer')"
+    lines="none"
+    *ngIf="havePayment && haveTF"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/tf.png" />
+    </ion-thumbnail>
+    <ion-label style="font-size: 13px">
+      {{util.getString('Transfer')}}
+    </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="createOrder('Qris')"
+    lines="none"
+    *ngIf="havePayment && haveQR"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/qr.png" />
+    </ion-thumbnail>
+    <ion-label style="font-size: 13px"> {{util.getString('Qris')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="paypalPayment()"
+    lines="none"
+    *ngIf="havePayment && havePayPal"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/paypal.png" />
+    </ion-thumbnail>
+    <ion-label style="font-size: 13px">
+      {{util.getString('Pay with PayPal')}}
+    </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item (click)="paytm()" lines="none" *ngIf="havePayment && havePayTM">
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/paytm.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with PayTM')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="instaPay()"
+    lines="none"
+    *ngIf="havePayment && haveInstamojo"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/instamojoapp.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with Instamojo')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item (click)="proceed()" lines="none" *ngIf="havePayment && haveRazor">
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/razor.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with RazorPay')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="paystackPay()"
+    lines="none"
+    *ngIf="havePayment && havepayStack"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/paystack.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with PayStack')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+
+  <ion-item
+    (click)="flutterpay()"
+    lines="none"
+    *ngIf="havePayment && havepayStack"
+  >
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/flutter.png" />
+    </ion-thumbnail>
+    <ion-label> {{util.getString('Pay with Flutterwave')}} </ion-label>
+    <ion-icon mode="ios" name="arrow-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+</ion-content>
