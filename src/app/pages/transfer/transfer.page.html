@@ -1,0 +1,31 @@
+<!-- 
+   Authors : dimarket
+  Website : https://#/
+  App Name : dimarket
+  Created : 10-Sep-2020
+  This App Template Source code is licensed as per the
+  terms found in the Website https://#/license
+  Copyright © 2020-present dimarket.
+ -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title size="small">
+      {{util.getString('Cara Pembayaran Transfer Bank')}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <p style="text-align: center; font-size: 13px; text-align: center">
+      {{util.getString('Lakukan pembayaran dengan Transfer Kerekening
+      Berikut')}}
+    </p>
+    <img src="assets/qris.jpeg" />
+  </ion-list>
+</ion-content>

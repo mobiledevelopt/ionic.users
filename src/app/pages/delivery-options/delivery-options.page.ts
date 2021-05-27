@@ -23,6 +23,7 @@ import { Router, NavigationExtras } from "@angular/router";
 })
 export class DeliveryOptionsPage implements OnInit {
   deliveryOption: any = "home";
+  transaksiOption: any = "regular";
 
   storeAddress: any[] = [];
   time: any;
@@ -38,8 +39,7 @@ export class DeliveryOptionsPage implements OnInit {
   ) {
     this.getStoreList();
     this.datetime = "today";
-    this.time =
-      this.util.getString("") + moment().format("dddd, DD-MMMM-YYYY");
+    this.time = this.util.getString("") + moment().format("dddd, DD-MMMM-YYYY");
   }
 
   ngOnInit() {}
@@ -110,9 +110,21 @@ export class DeliveryOptionsPage implements OnInit {
 
   payment() {
     this.cart.deliveryAt = this.deliveryOption;
+    this.cart.transaksiOption = this.transaksiOption;
     this.cart.datetime = this.datetime;
-    if (this.deliveryOption === "home") {
+    if (this.deliveryOption === "home" && this.transaksiOption == "regular") {
       console.log("address");
+      const param: NavigationExtras = {
+        queryParams: {
+          from: "cart",
+        },
+      };
+      this.cart.calcuate();
+      this.router.navigate(["tabs/cart/address"], param);
+    } else if (
+      this.deliveryOption === "home" &&
+      this.transaksiOption == "express"
+    ) {
       const param: NavigationExtras = {
         queryParams: {
           from: "cart",

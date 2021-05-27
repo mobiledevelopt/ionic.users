@@ -45,6 +45,28 @@
     </ion-radio-group>
   </ion-list>
 
+  <div *ngIf="deliveryOption === 'home'">
+    <p class="header" style="font-size: 13px">
+      {{util.getString('Jenis Transaksi :')}}
+    </p>
+    <ion-list lines="none" class="delivery">
+      <ion-radio-group [(ngModel)]="transaksiOption">
+        <ion-item>
+          <ion-label style="font-size: 12px">
+            {{util.getString('Regular')}}
+          </ion-label>
+          <ion-radio value="regular" slot="end" mode="md"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label style="font-size: 12px">
+            {{util.getString('Express')}}
+          </ion-label>
+          <ion-radio value="express" slot="end" mode="md"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
   <div>
     <p class="header" style="font-size: 13px">
       {{util.getString('Di Pesan Pada :')}}

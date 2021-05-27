@@ -231,6 +231,14 @@ export class PaymentPage implements OnInit {
     this.router.navigate(["offers"]);
   }
 
+  openQris() {
+    this.router.navigate(["qris"]);
+  }
+
+  openTF() {
+    this.router.navigate(["transfer"]);
+  }
+
   async createOrder(pay) {
     //////////// new
     //////////// new
@@ -244,6 +252,7 @@ export class PaymentPage implements OnInit {
       };
       orderStatus.push(info);
     });
+
     const notes = [
       {
         status: 1,
@@ -251,6 +260,7 @@ export class PaymentPage implements OnInit {
         time: moment().format("lll"),
       },
     ];
+
     const param = {
       uid: localStorage.getItem("uid"),
       store_id: storeId.join(),
@@ -261,6 +271,7 @@ export class PaymentPage implements OnInit {
       // paid_method: "cod",
       paid_method: pay,
       order_to: this.cart.deliveryAt,
+      order_option: this.cart.transaksiOption,
       orders: JSON.stringify(this.cart.cart),
       notes: JSON.stringify(notes),
       address:
@@ -336,6 +347,7 @@ export class PaymentPage implements OnInit {
           : moment().add(1, "days").format("YYYY-MM-DD HH:mm:ss"),
       paid_method: method,
       order_to: this.cart.deliveryAt,
+      order_option: this.cart.transaksiOption,
       orders: JSON.stringify(this.cart.cart),
       notes: JSON.stringify(notes),
       address:
@@ -486,6 +498,7 @@ export class PaymentPage implements OnInit {
       }
     });
   }
+
   paytm() {
     const options: InAppBrowserOptions = {
       location: "no",
