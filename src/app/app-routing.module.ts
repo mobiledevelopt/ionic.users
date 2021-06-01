@@ -72,6 +72,11 @@ const routes: Routes = [
       import("./pages/orders/orders.module").then((m) => m.OrdersPageModule),
   },
   {
+    path: "notif",
+    loadChildren: () =>
+      import("./pages/notif/notif.module").then((m) => m.NotifPageModule),
+  },
+  {
     path: "order-details",
     loadChildren: () =>
       import("./pages/order-details/order-details.module").then(
