@@ -14,7 +14,9 @@
 </ion-header>
 <app-closed *ngIf="util.appClosed"></app-closed>
 <ion-content class="ion-padding" *ngIf="!util.appClosed">
-  <p *ngIf="!dummy?.length && !cities?.length" class="ion-text-center"> {{util.getString('No Cities Found')}} </p>
+  <p *ngIf="!dummy?.length && !cities?.length" class="ion-text-center">
+    {{util.getString('No Cities Found')}}
+  </p>
   <ion-item *ngFor="let item of dummy">
     <ion-label>
       <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
@@ -30,7 +32,12 @@
     </ion-radio-group>
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="cities.length && id">
+  <ion-fab
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+    *ngIf="cities.length && id"
+  >
     <ion-fab-button (click)="selected()">
       <ion-icon name="checkmark" *ngIf="!clicked"></ion-icon>
       <ion-spinner name="circles" *ngIf="clicked"></ion-spinner>

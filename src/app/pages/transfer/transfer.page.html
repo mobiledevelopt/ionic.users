@@ -22,10 +22,25 @@
 
 <ion-content class="ion-padding">
   <ion-list>
-    <p style="text-align: center; font-size: 13px; text-align: center">
-      {{util.getString('Lakukan pembayaran dengan Transfer Kerekening
-      Berikut')}}
-    </p>
-    <img src="assets/qris.jpeg" />
+    <ion-card>
+      <ion-item>
+        <p style="text-align: center; font-size: 13px; text-align: center">
+          {{util.getString('Lakukan Pembayaran Dengan Transfer Ke Rekening
+          Berikut,')}}
+        </p>
+      </ion-item>
+
+      <ion-card-content>
+        <p style="text-align: center; font-size: 13px; text-align: center">
+          {{bank}}
+        </p>
+        <p style="text-align: center; font-size: 13px; text-align: center">
+          {{bank_number}}
+        </p>
+        <p style="text-align: center; font-size: 13px; text-align: center">
+          {{an_bank}}
+        </p>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>

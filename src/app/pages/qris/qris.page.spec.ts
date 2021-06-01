@@ -7,19 +7,19 @@
   terms found in the Website https://#/license
   Copyright © 2020-present dimarket.
 */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { IonicModule } from "@ionic/angular";
 
-import { QrisPage } from './qris.page';
+import { QrisPage } from "./qris.page";
 
-describe('QrisPage', () => {
+describe("QrisPage", () => {
   let component: QrisPage;
   let fixture: ComponentFixture<QrisPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [QrisPage],
-      imports: [IonicModule.forRoot()]
+      imports: [IonicModule.forRoot()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(QrisPage);
@@ -27,7 +27,7 @@ describe('QrisPage', () => {
     fixture.detectChanges();
   }));
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

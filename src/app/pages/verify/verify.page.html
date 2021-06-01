@@ -11,19 +11,34 @@
 
 <ion-content>
   <div class="otpContainer">
-    <h2 class="headerText"> {{util.getString('Verification')}} </h2>
-    <p class="subTitleText">{{util.getString('We texted you a code to verify')}}
-      <br> {{util.getString('your phone')}} {{mobile}}
+    <h2 class="headerText">{{util.getString('Verification')}}</h2>
+    <p class="subTitleText">
+      {{util.getString('We texted you a code to verify')}} <br />
+      {{util.getString('your phone')}} {{mobile}}
     </p>
     <div class="otpInputs">
-      <ng-otp-input (onInputChange)="onOtpChange($event)"
-        [config]="{length:6,inputStyles:{'width': '30px','height': '30px'}}">
+      <ng-otp-input
+        (onInputChange)="onOtpChange($event)"
+        style="background: #ffffff"
+        [config]="{length:6,inputStyles:{'width': '30px','height': '30px','background':'#FFFFFF'}}"
+      >
       </ng-otp-input>
     </div>
-    <ion-button class="btn_class" (click)="continue()" type="submit" expand="block">{{util.getString('Continue')}}
+    <ion-button
+      class="btn_class"
+      (click)="continue()"
+      type="submit"
+      expand="block"
+      >{{util.getString('Continue')}}
     </ion-button>
 
-    <ion-button (click)="resend()" *ngIf="resendCode" type="submit" expand="block" fill="clear">
+    <ion-button
+      (click)="resend()"
+      *ngIf="resendCode"
+      type="submit"
+      expand="block"
+      fill="clear"
+    >
       {{util.getString('Resend code')}}
     </ion-button>
   </div>

@@ -7,16 +7,16 @@
   terms found in the Website https://#/license
   Copyright © 2020-present dimarket.
 */
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
-import { ApiService } from 'src/app/services/api.service';
-import { UtilService } from 'src/app/services/util.service';
-import { CartService } from 'src/app/services/cart.service';
+import { Component, OnInit } from "@angular/core";
+import { NavController } from "@ionic/angular";
+import { ApiService } from "src/app/services/api.service";
+import { UtilService } from "src/app/services/util.service";
+import { CartService } from "src/app/services/cart.service";
 
 @Component({
-  selector: 'app-cities',
-  templateUrl: './cities.page.html',
-  styleUrls: ['./cities.page.scss'],
+  selector: "app-cities",
+  templateUrl: "./cities.page.html",
+  styleUrls: ["./cities.page.scss"],
 })
 export class CitiesPage implements OnInit {
   dummy = Array(10);
@@ -30,41 +30,43 @@ export class CitiesPage implements OnInit {
     public cart: CartService
   ) {
     this.clicked = false;
-    const id = localStorage.getItem('city');
-    if (id && id !== null && id !== 'null') {
+    const id = localStorage.getItem("city");
+    if (id && id !== null && id !== "null") {
       this.id = id;
     }
     this.getCities();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getCities() {
-    this.api.get('cities').subscribe((data: any) => {
-      console.log(data);
-      this.dummy = [];
-      if (data && data.status === 200 && data.data && data.data.length) {
-        this.cities = data.data.filter(x => x.status === '1');
-      } else {
-        this.util.errorToast(this.util.getString('No Cities Found'));
+    this.api.get("cities").subscribe(
+      (data: any) => {
+        console.log(data);
+        this.dummy = [];
+        if (data && data.status === 200 && data.data && data.data.length) {
+          this.cities = data.data.filter((x) => x.status === "1");
+        } else {
+          this.util.errorToast(this.util.getString("No Cities Found"));
+        }
+      },
+      (error) => {
+        console.log("error", error);
+        this.dummy = [];
+        this.util.errorToast(this.util.getString("Something went wrong"));
       }
-    }, error => {
-      console.log('error', error);
-      this.dummy = [];
-      this.util.errorToast(this.util.getString('Something went wrong'));
-    });
+    );
   }
 
   ionViewDidEnter() {
-    console.log('enter');
+    console.log("enter");
   }
 
   selected() {
-    console.log('id', this.id);
+    console.log("id", this.id);
     this.clicked = true;
-    localStorage.setItem('city', this.id);
-    const city = this.cities.filter(x => x.id === this.id);
+    localStorage.setItem("city", this.id);
+    const city = this.cities.filter((x) => x.id === this.id);
     this.util.city = city[0];
     this.util.publishCity(city);
     this.cart.cart = [];
@@ -73,7 +75,7 @@ export class CitiesPage implements OnInit {
     this.cart.grandTotal = 0;
     this.cart.coupon = null;
     this.cart.discount = null;
-    this.util.clearKeys('cart');
-    this.navCtrl.navigateRoot(['']);
+    this.util.clearKeys("cart");
+    this.navCtrl.navigateRoot([""]);
   }
 }

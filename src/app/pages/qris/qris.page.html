@@ -23,8 +23,8 @@
 <ion-content class="ion-padding">
   <ion-list>
     <p style="text-align: center; font-size: 13px; text-align: center">
-      {{util.getString('Scan Barcode dibawah untuk melakukan pembayaran')}}
+      {{util.getString('Scan Barcode dibawah Untuk Melakukan Pembayaran')}}
     </p>
-    <img src="assets/qris.jpeg" />
+    <img [src]="api.mediaURL + qris" />
   </ion-list>
 </ion-content>

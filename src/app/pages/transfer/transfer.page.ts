@@ -24,6 +24,10 @@ export class TransferPage implements OnInit {
   list: any[] = [];
   dummyList: any[] = [];
   page = 1;
+  bank: any;
+  bank_number: any;
+  an_bank: any;
+
   constructor(
     public api: ApiService,
     public util: UtilService,
@@ -35,7 +39,22 @@ export class TransferPage implements OnInit {
 
   ngOnInit() {}
 
-  getOffers() {}
+  getOffers() {
+    this.api.get("general/getBank").subscribe(
+      (data: any) => {
+        console.log("=>related=>", data.data[0]);
+        if (data && data.status === 200 && data.data && data.data.length) {
+          const products = data.data[0];
+          this.bank = products.bank;
+          this.bank_number = products.bank_number;
+          this.an_bank = products.an_bank;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   back() {
     this.navCtrl.back();

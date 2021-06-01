@@ -35,6 +35,7 @@ export class PaymentPage implements OnInit {
   haveInstamojo: boolean;
   havepayStack: boolean;
   haveflutterwave: boolean;
+  ketPengiriman: any;
   instamojo = {
     key: "",
     token: "",
@@ -72,6 +73,22 @@ export class PaymentPage implements OnInit {
       }
     );
     this.getPayments();
+    this.getKetPengiriman();
+  }
+
+  getKetPengiriman() {
+    this.api.get("general/getKetPengiriman").subscribe(
+      (data: any) => {
+        console.log("=>related=>", data.data[0]);
+        if (data && data.status === 200 && data.data && data.data.length) {
+          const products = data.data[0];
+          this.ketPengiriman = products.ket_pengiriman;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   getPayments() {

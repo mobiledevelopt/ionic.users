@@ -23,6 +23,7 @@ export class QrisPage implements OnInit {
   dummy = Array(5);
   list: any[] = [];
   dummyList: any[] = [];
+  qris: any;
   page = 1;
   constructor(
     public api: ApiService,
@@ -35,7 +36,20 @@ export class QrisPage implements OnInit {
 
   ngOnInit() {}
 
-  getOffers() {}
+  getOffers() {
+    this.api.get("general/getBank").subscribe(
+      (data: any) => {
+        console.log("=>related=>", data.data[0]);
+        if (data && data.status === 200 && data.data && data.data.length) {
+          const products = data.data[0];
+          this.qris = products.qris;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
 
   back() {
     this.navCtrl.back();

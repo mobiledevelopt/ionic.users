@@ -9,8 +9,8 @@
 */
 export const environment = {
   production: true,
-  baseURL: "https://ionic.pasarmu.id/index.php/",
-  mediaURL: "https://ionic.pasarmu.id/uploads/",
+  baseURL: "http://180.235.148.192/api/index.php/",
+  mediaURL: "http://180.235.148.192/api/uploads/",
   onesignal: {
     appId: "8e085517-90ae-4714-9a01-9e6facb4d595",
     googleProjectNumber: "498266104587",

@@ -100,6 +100,13 @@
       </ion-label>
     </div>
   </div>
+
+  <div class="billing" *ngIf="cart.transaksiOption === 'regular'">
+    <ion-label class="title" style="font-size: 11px">
+      {{ketPengiriman}}
+    </ion-label>
+  </div>
+
   <div class="header">
     <ion-label class="title" style="font-size: 13px">
       {{util.getString('Bayar Dengan')}}
