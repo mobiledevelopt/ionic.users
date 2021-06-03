@@ -321,6 +321,8 @@ export class HomePage implements OnInit {
           this.util.active_store = [
             ...new Set(this.stores.map((item) => item.uid)),
           ];
+          this.util.numberInfo = this.stores[0].mobile;
+
           console.log("store====>>>", this.stores);
           this.haveStores = true;
           this.getCategorys();
