@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.initappz.groceryee" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Groceryee</name>
-    <description>initappz.</description>
-    <author email="info@initappz.com" href="https://initappz.com/">initappz</author>
+<widget id="com.mobiledevelopt.pasarmu" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>pasarmuID</name>
+    <description>pasarmuID</description>
+    <author email="info@pasarmu.id" href="https://pasarmu.id/">pasarmuID</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

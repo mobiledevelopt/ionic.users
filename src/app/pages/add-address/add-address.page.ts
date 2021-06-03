@@ -1,12 +1,3 @@
-/*
-  Authors : dimarket
-  Website : https://#/
-  App Name : dimarket
-  Created : 10-Sep-2020
-  This App Template Source code is licensed as per the
-  terms found in the Website https://#/license
-  Copyright © 2020-present dimarket.
-*/
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Geolocation, GeolocationOptions, Geoposition, PositionError } from '@ionic-native/geolocation/ngx';
 import { NavController, Platform } from '@ionic/angular';

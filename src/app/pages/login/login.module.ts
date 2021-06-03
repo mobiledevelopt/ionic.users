@@ -1,12 +1,3 @@
-/*
-  Authors : leonidas (Asman)
-  Website : https://leonidas.com/
-  App Name : ionic 5 dimarket app
-  Created : 01-Jan-2021
-  This App Template Source code is licensed as per the
-  terms found in the Website https://leonidas.com/license
-  Copyright  © 2021-present leonidas.
-*/
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

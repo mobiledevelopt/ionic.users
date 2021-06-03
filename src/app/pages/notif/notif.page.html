@@ -1,12 +1,3 @@
-<!-- 
-   Authors : leonidas (Asman)
-  Website : https://leonidas.com/
-  App Name : ionic 5 dimarket app
-  Created : 01-Jan-2021
-  This App Template Source code is licensed as per the
-  terms found in the Website https://leonidas.com/license
-  Copyright  © 2021-present leonidas.
- -->
 <ion-header class="ion-no-border" *ngIf="!util.appClosed">
   <ion-toolbar color="primary">
     <ion-title size="small" style="margin-top: 10px">
@@ -54,7 +45,6 @@
       <div
         class="card_div"
         *ngFor="let item of orders"
-        (click)="goToOrder(item)"
       >
         <div style="margin: auto; width: 50%; padding: 10px">
           <img
@@ -75,9 +65,7 @@
             {{item.title}}
           </ion-label>
           <div>
-            <p class="items">
-              <span>X {{item.msg}}</span>
-            </p>
+            <p>{{item.msg}}</p>
           </div>
           <ion-label class="datetime">{{ item.date}}</ion-label>
         </div>
