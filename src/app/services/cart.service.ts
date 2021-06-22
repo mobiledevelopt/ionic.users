@@ -29,7 +29,9 @@ export class CartService {
   public minOrderPrice: any = 0;
   public freeShipping: any = 0;
   public datetime: any;
+  public jam: any;
   public deliveryAt: any;
+  public catatan_belanja: any;
   public transaksiOption: any;
   public deliveryAddress: any;
   public deliveryPrice: any = 0;

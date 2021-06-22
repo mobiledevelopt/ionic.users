@@ -14,7 +14,7 @@
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title size="small"> {{util.getString('Order Details')}} ##{{id}}</ion-title>
+    <ion-title size="small"> {{util.getString('Order Details')}} #{{id}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -87,9 +87,13 @@
 
     <div class="flex_div">
       <ion-label> {{util.getString('Delivery On')}} </ion-label>
-      <ion-label class="values"> {{datetime}} </ion-label>
+      <ion-label class="values"> {{datetime}}, {{time}}</ion-label>
     </div>
 
+    <div class="flex_div">
+      <ion-label> {{util.getString('Catatan Belanja')}} </ion-label>
+      <ion-label class="values"> {{catatan}}</ion-label>
+    </div>
 
     <ion-label class="titles"> {{util.getString('Order Tracking')}} </ion-label>
 

@@ -27,6 +27,7 @@ export class PaymentPage implements OnInit {
   havepayStack: boolean;
   haveflutterwave: boolean;
   ketPengiriman: any;
+  catatan_belanja: any;
   instamojo = {
     key: "",
     token: "",
@@ -273,12 +274,14 @@ export class PaymentPage implements OnInit {
       uid: localStorage.getItem("uid"),
       store_id: storeId.join(),
       date_time:
-        this.cart.datetime === "today"
-          ? moment().format("YYYY-MM-DD HH:mm:ss")
-          : moment().add(1, "days").format("YYYY-MM-DD HH:mm:ss"),
+        this.cart.transaksiOption === "regular"
+          ? moment(this.cart.datetime).format("YYYY-MM-DD")
+          : moment(this.cart.datetime).add(1, "days").format("YYYY-MM-DD"),
       // paid_method: "cod",
+      time: this.cart.jam,
       paid_method: pay,
       order_to: this.cart.deliveryAt,
+      catatan: this.catatan_belanja,
       order_option: this.cart.transaksiOption,
       orders: JSON.stringify(this.cart.cart),
       notes: JSON.stringify(notes),

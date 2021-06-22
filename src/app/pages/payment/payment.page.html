@@ -99,6 +99,14 @@
         </span>
       </ion-label>
     </div>
+
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" stacked>{{util.getString('Catatan :')}}</ion-label>
+        <ion-input type="email" placeholder="Catatan Belanja" [(ngModel)]="catatan_belanja"></ion-input>
+      </ion-item>
+    </ion-list>
+
   </div>
 
   <div class="billing" *ngIf="cart.transaksiOption === 'regular'">
@@ -152,7 +160,7 @@
     </ion-item>
     <div class="coupones1" (click)="openTF()">
       <ion-label class="title" style="font-size: 13px"
-        >{{util.getString('Cara Pembayaran Transfer')}} <br />
+        >{{util.getString('Cara Bayar')}} <br />
       </ion-label>
     </div>
   </ion-row>
@@ -173,7 +181,7 @@
 
     <div class="coupones1" (click)="openQris()">
       <ion-label class="title" style="font-size: 13px"
-        >{{util.getString('Cara Pembayaran Qris')}} <br />
+        >{{util.getString('Cara Bayar')}} <br />
       </ion-label>
     </div>
   </ion-row>

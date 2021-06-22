@@ -19,6 +19,8 @@ export class OrderDetailsPage implements OnInit {
   payMethod: any;
   status: any[] = [];
   datetime: any;
+  time: any;
+  catatan: any;
   orderAt: any;
   address: any;
   userInfo: any;
@@ -123,7 +125,9 @@ export class OrderDetailsPage implements OnInit {
         }
 
         // if()
-        this.datetime = moment(info.date_time).format('dddd, DD-MMMM-YYYY');
+        this.datetime = moment(info.date_time).format('DD-MMMM-YYYY');
+        this.time = info.time;
+        this.catatan = info.catatan == "undefined" ?  "--" : info.catatan  ;
         this.payMethod =
           info.paid_method === "cod"
             ? "COD"
