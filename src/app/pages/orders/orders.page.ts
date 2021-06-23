@@ -3,6 +3,7 @@ import { UtilService } from '../../services/util.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import * as moment from 'moment';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.page.html',
@@ -37,7 +38,7 @@ export class OrdersPage implements OnInit {
         orders.forEach(element => {
           if (((x) => { try { JSON.parse(x); return true; } catch (e) { return false } })(element.orders)) {
             element.orders = JSON.parse(element.orders);
-            element.date_time = moment(element.date_time).format('dddd, MMMM Do YYYY');
+            element.date_time = moment(element.date_time).format('dddd, DD-MMMM-YYYY');
             element.orders.forEach(order => {
               console.log(element.id, '=>', order.variations);
               if (order.variations && order.variations !== '' && typeof order.variations === 'string') {

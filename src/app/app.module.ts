@@ -8,7 +8,7 @@
   Copyright and Good Faith Purchasers © 2020-present initappz.
 */
 
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -41,6 +41,9 @@ import { FormsModule } from '@angular/forms';
 import { SortPageModule } from './pages/sort/sort.module';
 import { VerifyPageModule } from './pages/verify/verify.module';
 import { SelectCountryPageModule } from './pages/select-country/select-country.module';
+import { registerLocaleData } from '@angular/common';
+import localeId from '@angular/common/locales/id'; 
+registerLocaleData(localeId, 'id'); 
 
 @NgModule({
   declarations: [AppComponent],
@@ -71,7 +74,8 @@ import { SelectCountryPageModule } from './pages/select-country/select-country.m
     Diagnostic,
     Geolocation,
     InAppBrowser,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: LOCALE_ID, useValue: "id-ID" },
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]
 })
