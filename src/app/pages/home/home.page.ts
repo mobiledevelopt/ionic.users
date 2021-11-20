@@ -216,7 +216,7 @@ export class HomePage implements OnInit {
     if (!this.util.appClosed) {
       this.getInit();
       const pop = localStorage.getItem("pop");
-      if (pop && pop != null && pop !== "null") {
+      if (pop && pop != null && pop !== "null"  && localStorage.getItem('uid') != "null") {
         console.log("alredy poped");
       } else {
         console.log("open pop");
@@ -266,8 +266,18 @@ export class HomePage implements OnInit {
               message: info.message,
               mode: "ios",
               buttons: [
-                this.util.getString("Cancle"),
-                this.util.getString("Ok"),
+                {
+                  text:this.util.getString("Register"),  
+                  handler: data => {
+                    this.router.navigate(["register"]);
+                  }
+                },
+                {
+                  text:this.util.getString("Login"),  
+                  handler: data => {
+                    this.router.navigate(["login"]);
+                  }
+                },
               ],
             });
             localStorage.setItem("pop", "true");
@@ -280,6 +290,7 @@ export class HomePage implements OnInit {
       }
     );
   }
+
   getInit() {
     this.getCity();
     this.dummyCates = Array(5);

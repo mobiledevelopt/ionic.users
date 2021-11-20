@@ -5,6 +5,7 @@ import { UtilService } from 'src/app/services/util.service';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { CartService } from "src/app/services/cart.service";
 declare var google;
 
 @Component({
@@ -25,6 +26,8 @@ export class AddAddressPage implements OnInit {
   pincode: any = '';
   id: any;
   from: any;
+  area: any[] = [];
+  area_select: any;
 
   gotLatLng: boolean = false;
   constructor(
@@ -35,6 +38,7 @@ export class AddAddressPage implements OnInit {
     public util: UtilService,
     private route: ActivatedRoute,
     private platform: Platform,
+    public cart: CartService,
   ) {
     this.gotLatLng = false;
     this.route.queryParams.subscribe(data => {
@@ -50,10 +54,13 @@ export class AddAddressPage implements OnInit {
         this.lat = info.lat;
         this.lng = info.lng;
         this.pincode = info.pincode;
+        this.area_select = info.id_area;
         this.loadmap(this.lat, this.lng, this.mapEle);
+        this.getArea();
       } else {
         this.from = 'new';
         this.getLocation();
+        this.getArea();
       }
     });
   }
@@ -100,6 +107,39 @@ export class AddAddressPage implements OnInit {
     });
   }
 
+  getArea(){
+    const info = [...new Set(this.cart.cart.map((item) => item.store_id))];
+    console.log("store iddss area==================>>", info);
+    const param = {
+      id: info.join(),
+    };
+    this.api.post("area", param).subscribe(
+      (data: any) => {
+        console.log(data);
+        if (data && data.status === 200 && data.data.length) {
+          this.area = data.data;
+          if(this.from != 'edit'){
+           this.area_select = data.data[0].id;
+          }
+        } else {
+          this.util.showToast(
+            this.util.getString("Area Not Found"),
+            "danger",
+            "bottom"
+          );
+          this.back();
+        }
+      },
+      (error) => {
+        console.log("error", error);
+        this.util.showToast(
+          this.util.getString("Something went wrong"),
+          "danger",
+          "bottom"
+        );
+      }
+    );
+  }
   grantRequest() {
     this.geolocation.getCurrentPosition({ maximumAge: 9000, timeout: 20000, enableHighAccuracy: true }).then((resp) => {
       if (resp) {
@@ -230,7 +270,8 @@ export class AddAddressPage implements OnInit {
           title: this.title,
           house: this.house,
           landmark: this.landmark,
-          pincode: this.pincode
+          pincode: this.pincode,
+          id_area: this.area_select
         };
         this.api.post('address/save', param).subscribe((data: any) => {
           this.util.hide();
@@ -255,7 +296,11 @@ export class AddAddressPage implements OnInit {
   }
 
   updateAddress() {
-    if (this.address === '' || this.landmark === '' || this.house === '' || this.pincode === '') {
+    if (this.address === '' || this.landmark === '' || this.house === '') {
+      console.log('address',this.address);
+      console.log('landmark',this.landmark);
+      console.log('house',this.house);
+      console.log('pincode',this.pincode);
       this.util.errorToast(this.util.getString('All Fields are required'));
       return false;
     }
@@ -275,7 +320,8 @@ export class AddAddressPage implements OnInit {
           title: this.title,
           house: this.house,
           landmark: this.landmark,
-          pincode: this.pincode
+          pincode: this.pincode,
+          id_area: this.area_select
         };
         this.util.show();
         this.api.post('address/editList', param).subscribe((data: any) => {

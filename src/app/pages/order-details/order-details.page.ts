@@ -126,7 +126,7 @@ export class OrderDetailsPage implements OnInit {
 
         // if()
         this.datetime = moment(info.date_time).format('DD-MMMM-YYYY');
-        this.time = info.time;
+        this.time =  this.util.toTime(info.time);
         this.catatan = info.catatan == "undefined" ?  "--" : info.catatan  ;
         this.payMethod =
           info.paid_method === "cod"
@@ -412,7 +412,7 @@ export class OrderDetailsPage implements OnInit {
 
     await alert.present();
   }
-
+  
   async contanctDriver(item) {
     console.log(item);
     const alert = await this.alertController.create({

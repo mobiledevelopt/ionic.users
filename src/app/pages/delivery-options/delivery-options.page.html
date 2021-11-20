@@ -83,7 +83,7 @@
     <ion-item>
       <ion-label>Jam</ion-label>
       <ion-select  [(ngModel)]="jam_pesan" placeholder="Pilih Jam" multiple="false">
-        <ion-select-option *ngFor="let item of timeSlot" [value]="item.time">{{item.time}}</ion-select-option>
+        <ion-select-option *ngFor="let item of timeSlot" [value]="item.time">{{item.time | date:'HH:mm'}}</ion-select-option>
       </ion-select>
     </ion-item>
   </div>

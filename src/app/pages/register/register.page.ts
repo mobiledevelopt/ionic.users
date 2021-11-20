@@ -36,9 +36,11 @@ export class RegisterPage implements OnInit {
     private alertController: AlertController
   ) {
     this.dummy = this.util.countrys;
+    this.selectedCC(this.dummy[0]);
   }
 
   ngOnInit() {
+    
   }
 
   async openModal() {

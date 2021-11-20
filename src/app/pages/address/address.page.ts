@@ -4,7 +4,7 @@ import { UtilService } from "src/app/services/util.service";
 import { NavController, PopoverController } from "@ionic/angular";
 import Swal from "sweetalert2";
 import { ApiService } from "src/app/services/api.service";
-import { PopoverComponent } from "src/app/components/popover/popover.component";
+import { PopoverComponent } from "src/app/components/popover_1/popover.component";
 import { CartService } from "src/app/services/cart.service";
 
 @Component({

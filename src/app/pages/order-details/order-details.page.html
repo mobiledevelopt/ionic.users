@@ -87,7 +87,7 @@
 
     <div class="flex_div">
       <ion-label> {{util.getString('Delivery On')}} </ion-label>
-      <ion-label class="values"> {{datetime}}, {{time}}</ion-label>
+      <ion-label class="values"> {{datetime | date : "EEEE, dd-MMMM-yyyy"}} {{time | date:"HH:mm"}}</ion-label>
     </div>
 
     <div class="flex_div">
@@ -111,7 +111,7 @@
         <span *ngFor="let item of orderDetail">
           <div class="line_div">
             <ion-label [class.round_div_red]="item.status === 1" [class.round_div_darkgray]="item.status === 1">
-              {{item.time}}</ion-label>
+              {{item.time | date:"EEEE, dd-MMMM-yyyy HH:mm"}}</ion-label>
           </div>
           <div class="round_div_gray" [class.round_div_red]="item.status === 1"
             [class.round_div_darkgray]="item.status === 1">

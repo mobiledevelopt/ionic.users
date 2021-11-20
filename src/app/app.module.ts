@@ -41,6 +41,7 @@ import { FormsModule } from '@angular/forms';
 import { SortPageModule } from './pages/sort/sort.module';
 import { VerifyPageModule } from './pages/verify/verify.module';
 import { SelectCountryPageModule } from './pages/select-country/select-country.module';
+
 import { registerLocaleData } from '@angular/common';
 import localeId from '@angular/common/locales/id'; 
 registerLocaleData(localeId, 'id'); 

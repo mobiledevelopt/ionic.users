@@ -6,6 +6,7 @@ import { CartService } from "src/app/services/cart.service";
 import { TimeComponent } from "src/app/components/time/time.component";
 import * as moment from "moment";
 import { Router, NavigationExtras } from "@angular/router";
+import { utils } from "protractor";
 
 @Component({
   selector: "app-delivery-options",
@@ -39,7 +40,9 @@ export class DeliveryOptionsPage implements OnInit {
     this.getTimeSlot();
     this.datetime = "today";
     this.time = this.util.getString("") + moment().format("dddd, DD-MMMM-YYYY");
-    this.tanggal = new Date();
+    let date = new Date();
+    date.setDate(date.getDate() + 1);
+    this.tanggal = date;
     this.min_tanggal = new Date();
     this.tanggal_pesan = this.tanggal.toISOString();
     this.min_date = new Date();
@@ -55,9 +58,6 @@ export class DeliveryOptionsPage implements OnInit {
   getTimeSlot(){
     const info = [...new Set(this.cart.cart.map((item) => item.store_id))];
     console.log("store iddss==================>>", info);
-    // test
-    // info.push(10, 17);
-    // test
     const param = {
       id: info.join(),
     };
@@ -65,9 +65,13 @@ export class DeliveryOptionsPage implements OnInit {
       (data: any) => {
         console.log(data);
         if (data && data.status === 200 && data.data.length) {
+          const a = this.util;
+          data.data.forEach(function (value,key) {
+            data.data[key].time = a.toTime(data.data[key].time);
+            console.log(data.data[key].time);
+          }); 
           this.timeSlot = data.data;
           this.jam_pesan = data.data[0].time;
-           console.log(this.timeSlot);
         } else {
           this.util.showToast(
             this.util.getString("Timeslote Not Found"),
@@ -152,8 +156,14 @@ export class DeliveryOptionsPage implements OnInit {
     this.cart.deliveryAt = this.deliveryOption;
     this.cart.catatan_belanja = this.catatan_belanja;
     this.cart.transaksiOption = this.transaksiOption;
-    this.cart.datetime = this.tanggal_pesan;
     this.cart.jam = this.jam_pesan;
+    console.log(this.transaksiOption);
+    if (this.transaksiOption === "express") {
+      this.cart.datetime = moment().format("YYYY-MM-DD");
+    }else{
+      this.cart.datetime = this.tanggal_pesan;
+    }
+    console.log(this.cart.datetime);
     if (this.deliveryOption === "home" && this.transaksiOption == "regular") {
       console.log("address");
       const param: NavigationExtras = {
